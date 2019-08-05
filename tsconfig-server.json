@@ -1,0 +1,12 @@
+{
+  "compileOnSave": false,
+  "include": ["./server-ts/**/*.*"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "./server-out/",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "target": "es5",
+    "typeRoots": ["node_modules/@types"]
+  }
+}
