@@ -1,11 +1,13 @@
-<mat-list>
-  <h3>Projects</h3>
-  <mat-list-item>
-    <mat-card>
-      <mat-card-header>
-        Smartbanking
-      </mat-card-header>
-    </mat-card>
-  </mat-list-item>
-</mat-list>
-<button (click)="getProjects()">Get Projects</button>
+<div class="main-container">
+  <div class="content">
+    <h3>Projects</h3>
+    <div *ngFor="let project of projects$ | async">
+      <mat-card>
+        <mat-card-header>
+          {{ project.projectName }}
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <!-- <button (click)="getProjects()">Get Projects</button> -->
+  </div>
+</div>

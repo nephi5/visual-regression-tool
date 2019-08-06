@@ -2,3 +2,14 @@
     width: 90vw;
     max-width: 1280px;
 }
+
+.main-container {
+    display: grid;
+    grid-template-columns: 10fr 80fr 10fr;
+    grid-template-areas: ". content .";
+}
+
+.content {
+    grid-area: content;
+    // max-width: 1200px;
+}

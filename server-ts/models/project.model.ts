@@ -4,8 +4,7 @@ const ProjectSchema = new mongoose.Schema(
   {
     projectName: {
       type: String,
-      required: true,
-      unique: true
+      required: true
     },
     lastBuild: {
       type: Date,
@@ -18,7 +17,8 @@ const ProjectSchema = new mongoose.Schema(
     },
     createdAt: {
       type: Date,
-      default: Date.now
+      default: Date.now,
+      required: false
     }
   },
   {

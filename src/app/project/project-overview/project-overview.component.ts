@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-overview',
@@ -7,11 +9,15 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./project-overview.component.scss']
 })
 export class ProjectOverviewComponent implements OnInit {
+  public projects$: Observable<any>;
+
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.projects$ = this.getProjects().pipe(tap(next => console.log(next)));
+  }
 
-  getProjects() {
-    this.http.get('api/project/all').subscribe(res => console.log(res));
+  getProjects(): Observable<any> {
+    return this.http.get('api/project/all');
   }
 }

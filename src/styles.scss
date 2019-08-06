@@ -2,8 +2,8 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~angular-tree-component/dist/angular-tree-component.css';
 @import '~@angular/material/theming';
-@import '~dragula/dist/dragula.css';
 @import './styles/fontawesome/fontawesome.scss';
+@import './styles/route-container.scss';
 
 $custom-typography: mat-typography-config(
     $font-family: 'Exo'
