@@ -20,4 +20,11 @@ export class ProjectOverviewComponent implements OnInit {
   getProjects(): Observable<any> {
     return this.http.get('api/project/all');
   }
+
+  addNewProject(projectName: string) {
+    console.log('projectName', projectName);
+    this.http
+      .post('api/project', { projectName })
+      .subscribe(next => console.log(next));
+  }
 }

@@ -1,1 +1,13 @@
-<p>project-detail works!</p>
+<div class="main-container">
+  <div class="title-container">
+    <div class="title">
+      <h3>{{ (project$ | async)?.projectName }}</h3>
+    </div>
+  </div>
+  <div class="content">
+    <div class="list-item" *ngFor="let build of builds$ | async">
+      {{ build.buildId }}
+    </div>
+  </div>
+</div>
+<button (click)="addABuild()">add A Build</button>

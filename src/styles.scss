@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import './settings';
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~angular-tree-component/dist/angular-tree-component.css';
 @import '~@angular/material/theming';
 @import './styles/fontawesome/fontawesome.scss';
 @import './styles/route-container.scss';
+@import './styles/items.scss';
 
 $custom-typography: mat-typography-config(
     $font-family: 'Exo'
@@ -12,7 +14,7 @@ $custom-typography: mat-typography-config(
 @include mat-core($custom-typography);
 
 body {
-  background-color: #f4f3f3;
+  background-color: $background-color;
   margin: 0;
   app-root * {
     font-family: 'Font Awesome 5 Pro', sans-serif;

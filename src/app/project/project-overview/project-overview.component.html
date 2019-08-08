@@ -1,13 +1,22 @@
 <div class="main-container">
-  <div class="content">
-    <h3>Projects</h3>
-    <div *ngFor="let project of projects$ | async">
-      <mat-card>
-        <mat-card-header>
-          {{ project.projectName }}
-        </mat-card-header>
-      </mat-card>
+  <div class="title-container">
+    <div class="title">
+      <h3>Projects</h3>
     </div>
-    <!-- <button (click)="getProjects()">Get Projects</button> -->
+  </div>
+  <div class="content">
+    <div
+      *ngFor="let project of projects$ | async"
+      class="list-item"
+      [routerLink]="[project.projectId]"
+    >
+      <div class="project-name">
+        {{ project.projectName }}
+      </div>
+    </div>
   </div>
 </div>
+
+<h1>Add new Project</h1>
+<input type="text" #inputField />
+<button (click)="addNewProject(inputField.value)">Add new Project</button>

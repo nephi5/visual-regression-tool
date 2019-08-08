@@ -3,6 +3,7 @@ import { router as authRoutes } from './auth.route';
 import { router as userRoutes } from './user.route';
 import { router as imgRoutes } from './img.route';
 import { router as projectRoutes } from './project.route';
+import { router as buildRoutes } from './build.route';
 
 export const router = express.Router(); // eslint-disable-line new-cap
 
@@ -22,3 +23,4 @@ router.use('/auth', authRoutes);
 router.use('/user', userRoutes);
 router.use('/img', imgRoutes);
 router.use('/project', projectRoutes);
+router.use('/build', buildRoutes);
