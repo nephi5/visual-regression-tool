@@ -4,7 +4,7 @@ const BuildSchema = new mongoose.Schema(
   {
     buildId: { type: String, unique: true },
     projectId: { type: String },
-    createdAt: {
+    started: {
       type: Date,
       default: Date.now
     },
@@ -15,6 +15,9 @@ const BuildSchema = new mongoose.Schema(
     totalScreenshots: {
       type: Number,
       default: 0
+    },
+    endDate: {
+      type: Date
     }
   },
   {
@@ -22,4 +25,13 @@ const BuildSchema = new mongoose.Schema(
   }
 );
 
-export const buildModel = mongoose.model('Builds', BuildSchema);
+export interface IBuild extends mongoose.Document {
+  buildId: string;
+  projectId: string;
+  started?: string;
+  unreviewed?: number;
+  totalScreenshots?: number;
+  endDate?: string;
+}
+
+export const buildModel = mongoose.model<IBuild>('Builds', BuildSchema);

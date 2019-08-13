@@ -6,7 +6,11 @@ const debug = require('debug')('express-mongoose-es6-rest-api:index');
 
 // connect to mongo db
 const mongoUri = config.mongo.host;
-mongoose.connect(mongoUri, { keepAlive: true, useNewUrlParser: true });
+mongoose.connect(mongoUri, {
+  useCreateIndex: true,
+  keepAlive: true,
+  useNewUrlParser: true
+});
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${mongoUri}`);
 });

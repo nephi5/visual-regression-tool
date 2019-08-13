@@ -21,11 +21,10 @@ export class ProjectDetailComponent implements OnInit {
     this.route.params.subscribe(e => {
       const projectId = e['id'];
       console.log(e['id']);
-      this.builds$ = this.http.get(`api/build?projectId=${projectId}`);
+      this.projectId = projectId;
+      this.builds$ = this.getBuildsByProjectId(projectId);
 
-      this.project$ = this.http
-        .get(`api/project?id=${projectId}`)
-        .pipe(tap(next => (this.projectId = next.projectId)));
+      this.project$ = this.getProject(projectId);
     });
   }
 
@@ -33,5 +32,20 @@ export class ProjectDetailComponent implements OnInit {
     this.http
       .post('api/build', { projectId: this.projectId })
       .subscribe(result => console.log(result));
+  }
+
+  public deleteBuild(buildId: string, event: Event) {
+    event.stopPropagation();
+    this.http.delete(`api/build?buildId=${buildId}`).subscribe(result => {
+      this.builds$ = this.getBuildsByProjectId(this.projectId);
+    });
+  }
+
+  private getProject(projectId: string): Observable<any> {
+    return this.http.get(`api/project?id=${projectId}`);
+  }
+
+  private getBuildsByProjectId(projectId: string): Observable<any> {
+    return this.http.get(`api/build?projectId=${projectId}`);
   }
 }

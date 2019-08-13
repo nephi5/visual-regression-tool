@@ -8,6 +8,7 @@ router.route('/all').get(getAllBuilds);
 
 router.route('/').get(getBuild);
 router.route('/').post(insert);
+router.route('/').delete(deleteBuild);
 
 function getBuild(req: Request, res) {
   if (req.query && req.query.buildId) {
@@ -34,5 +35,11 @@ async function getBuildByProjectId(projectId, res) {
 async function getAllBuilds(req: Request, res) {
   const response = await ctrl.getAllBuilds();
 
+  res.json(response);
+}
+
+async function deleteBuild(req: Request, res) {
+  const buildId = req.query.buildId;
+  const response = await ctrl.deleteBuild(buildId);
   res.json(response);
 }

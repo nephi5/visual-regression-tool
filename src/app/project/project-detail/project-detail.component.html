@@ -5,8 +5,13 @@
     </div>
   </div>
   <div class="content">
-    <div class="list-item" *ngFor="let build of builds$ | async">
+    <div
+      [routerLink]="'build/' + build.buildId"
+      class="list-item"
+      *ngFor="let build of builds$ | async"
+    >
       {{ build.buildId }}
+      <i class="fas fa-trash" (click)="deleteBuild(build.buildId, $event)"></i>
     </div>
   </div>
 </div>
